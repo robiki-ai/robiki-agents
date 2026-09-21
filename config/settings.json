@@ -1,0 +1,9 @@
+{
+  "quietStartup": true,
+  "theme": "ocean",
+  "enableInstallTelemetry": false,
+  "enableAnalytics": false,
+  "treeFilterMode": "default",
+  "defaultThinkingLevel": "medium",
+  "defaultProjectTrust": "ask"
+}

@@ -1,0 +1,63 @@
+{
+  "name": "@robiki/agents",
+  "version": "1.0.0",
+  "description": "A re-usable pi agentic pipeline for use with codex and cursor",
+  "keywords": [
+    "pi",
+    "pi-package",
+    "robiki-agents",
+    "pi-agentic-pipeline",
+    "pi-extension",
+    "extension"
+  ],
+  "repository": "git@github.com:robiki-ai/agents.git",
+  "author": "keleko34 <gregory.guidero@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "type": "module",
+  "files": [
+    "extensions",
+    "scripts",
+    "skills",
+    "prompts",
+    "themes",
+    "utils",
+    "config"
+  ],
+  "scripts": {
+    "postinstall": "node scripts/postinstall.mjs",
+    "test": "node --test --test-timeout=180000 --test-concurrency=1 tools.test.ts"
+  },
+  "pi": {
+    "extensions": [
+      "./extensions"
+    ],
+    "skills": [
+      "./skills"
+    ],
+    "prompts": [
+      "./prompts"
+    ],
+    "themes": [
+      "./themes"
+    ]
+  },
+  "dependencies": {
+    "@cursor/sdk": "1.0.31",
+    "js-tiktoken": "1.0.21",
+    "ripgrep": "0.3.1"
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-ai": "0.84.4",
+    "@earendil-works/pi-coding-agent": "0.84.4",
+    "@earendil-works/pi-tui": "0.84.4"
+  },
+  "devDependencies": {
+    "@earendil-works/pi-agent-core": "0.84.4",
+    "@earendil-works/pi-ai": "0.84.4",
+    "@earendil-works/pi-coding-agent": "0.84.4",
+    "@earendil-works/pi-tui": "0.84.4",
+    "@types/node": "24.13.3",
+    "typescript": "7.0.2"
+  }
+}

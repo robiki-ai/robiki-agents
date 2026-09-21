@@ -1,0 +1,205 @@
+{
+  "search": {
+    "enabled": true,
+    "description": "Search for a literal substring in the contents of a file",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "string",
+          "description": "The substring to search for"
+        },
+        "path": {
+          "type": "string",
+          "description": "The path to the file to search"
+        }
+      },
+      "required": [
+        "query"
+      ]
+    }
+  },
+  "match": {
+    "enabled": true,
+    "description": "Search for a regex pattern in the contents of a file",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "string",
+          "description": "The regex pattern to search for"
+        },
+        "path": {
+          "type": "string",
+          "description": "The path to the file to search"
+        }
+      },
+      "required": [
+        "query"
+      ]
+    }
+  },
+  "glob": {
+    "enabled": true,
+    "description": "List files with a glob pattern",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "pattern": {
+          "type": "string",
+          "description": "The glob pattern to search for"
+        }
+      },
+      "required": [
+        "pattern"
+      ]
+    }
+  },
+  "ls": {
+    "enabled": true,
+    "description": "List the contents of a directory",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "description": "The path to the directory to list"
+        }
+      },
+      "required": [
+        "path"
+      ]
+    }
+  },
+  "which": {
+    "enabled": true,
+    "description": "Find the path of a command in the PATH",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "command": {
+          "type": "string",
+          "description": "The command to find"
+        }
+      },
+      "required": [
+        "command"
+      ]
+    }
+  },
+  "git": {
+    "enabled": true,
+    "description": "Run a git command",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "command": {
+          "type": "string",
+          "description": "The git command to run"
+        }
+      },
+      "required": [
+        "command"
+      ]
+    }
+  },
+  "gh": {
+    "enabled": true,
+    "description": "Run a GitHub CLI command",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "command": {
+          "type": "string",
+          "description": "The GitHub CLI command to run"
+        }
+      },
+      "required": [
+        "command"
+      ]
+    }
+  },
+  "read": {
+    "enabled": true,
+    "description": "Read the contents of a file. Supports text files and images. For text files, output is truncated to 2000 lines or 50KB (whichever is hit first). Use offset/limit for large files.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "description": "Path to the file to read (relative or absolute)"
+        },
+        "offset": {
+          "type": "number",
+          "description": "Line number to start reading from (1-indexed)"
+        },
+        "limit": {
+          "type": "number",
+          "description": "Maximum number of lines to read"
+        }
+      },
+      "required": [
+        "path"
+      ]
+    }
+  },
+  "edit": {
+    "enabled": true,
+    "description": "Edit a single file using exact text replacement. Every edits[].oldText must match a unique, non-overlapping region of the original file. If two changes affect the same block or nearby lines, merge them into one edit. Do not include large unchanged regions just to connect distant changes.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "description": "Path to the file to edit (relative or absolute)"
+        },
+        "edits": {
+          "type": "array",
+          "description": "One or more targeted replacements. Each edit is matched against the original file, not incrementally. Do not include overlapping or nested edits.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "oldText": {
+                "type": "string",
+                "description": "Exact text for one targeted replacement. It must be unique in the original file and must not overlap with any other edits[].oldText in the same call."
+              },
+              "newText": {
+                "type": "string",
+                "description": "Replacement text for this targeted edit."
+              }
+            },
+            "required": [
+              "oldText",
+              "newText"
+            ]
+          }
+        }
+      },
+      "required": [
+        "path",
+        "edits"
+      ]
+    }
+  },
+  "write": {
+    "enabled": true,
+    "description": "Write content to a file. Creates the file if it doesn't exist, overwrites if it does. Automatically creates parent directories.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "description": "Path to the file to write (relative or absolute)"
+        },
+        "content": {
+          "type": "string",
+          "description": "Content to write to the file"
+        }
+      },
+      "required": [
+        "path",
+        "content"
+      ]
+    }
+  }
+}
